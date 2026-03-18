@@ -1,24 +1,33 @@
-# ✨ SkyBound: Premium Flight Interface
+# ✈️ SkyBound: Premium Flight Interface
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Lucide](https://img.shields.io/badge/Lucide_Icons-FDE047?style=for-the-badge&logo=lucide&logoColor=black)
 
-A high-end, responsive landing page featuring a modern "Glassmorphism" design, animated background elements, and sleek typography.
+**SkyBound** is a high-end, cinematic flight discovery interface built with React and modern CSS. It features a sophisticated "Glassmorphism" design, smooth micro-interactions, and a responsive layout tailored for a premium travel experience.
 
-## 🚀 Key Features
-- **💎 Glassmorphism UI:** Translucent cards with backdrop-blur effects.
-- **🌈 Dynamic Gradients:** Animated background "blobs" and radial gradients for a premium feel.
-- **📱 Responsive:** Fully optimized for mobile and desktop displays.
-- **⚡ Performance:** Lightweight, pure HTML/CSS implementation (no heavy frameworks).
-- **🎨 Typography:** Uses the **Inter** font family for a professional, clean look.
+## ✨ Key Features
+
+- **💎 Glassmorphism UI:** Translucent components with advanced backdrop-blur effects and layered shadows for visual depth.
+- **🎬 Cinematic Animations:** Staggered entrance animations and smooth hover transitions that bring the interface to life.
+- **❤️ Micro-Interactions:** Functional "Like" system with interactive heart buttons and 3D hover effects on cards.
+- **🌓 Native Dark Mode:** Built-in support for system-level light and dark themes using modern CSS `light-dark()` functions.
+- **📱 Fluid & Responsive:** Optimized grid system that ensures an elegant viewing experience on mobile, tablet, and desktop.
+- **⚡ Zero-Config Setup:** Runs directly in the browser using Babel Standalone—no complex build tools required for previewing.
 
 ## 🛠️ Tech Stack
-- **Structure:** HTML5
-- **Styling:** CSS3 (Custom Variables & Keyframe Animations)
-- **Fonts:** Google Fonts (Inter)
 
-## 📦 How to View
-Simply open `index.html` in any modern web browser.
+- **Frontend:** React (JSX)
+- **Styling:** Modern CSS (Nesting, Variables, `light-dark()`)
+- **Icons:** Lucide React
+- **Typography:** Inter (Google Fonts)
+- **Deployment:** GitHub Pages Ready
+
+## 📦 Quick Preview
+
+1. Clone the repository.
+2. Open `index.html` in any modern web browser.
+3. Switch your system theme to see the interface adapt instantly!
 
 ---
-Created by [Alfacentauree](https://github.com/Alfacentauree)
+Developed with ❤️ by [Alfacentauree](https://github.com/Alfacentauree)
