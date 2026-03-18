@@ -4,35 +4,140 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First Attempt | Portfolio</title>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Flight Card UI | React</title>
     
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Animated background blob -->
-    <div class="blob"></div>
-    
-    <div id="root">
-        <div class="container">
-            <div class="glass-card">
-                <h1>First Attempt</h1>
-                <h2>Designing the future, one pixel at a time. Welcome to my creative journey where imagination meets code.</h2>
-                
-                <a href="#" class="btn">Explore Work</a>
-                
-                <div class="socials">
-                    <a href="https://github.com/Alfacentauree" class="social-link" target="_blank">GitHub</a>
-                    <a href="#" class="social-link">LinkedIn</a>
-                    <a href="#" class="social-link">Twitter</a>
+    <div id="root"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" data-type="module">
+        import React, { StrictMode } from "https://esm.sh/react";
+        import { createRoot } from "https://esm.sh/react-dom/client";
+        import clsx from "https://esm.sh/clsx";
+        import * as Lucide from "https://esm.sh/lucide-react";
+
+        const { Heart, Plane, Tag } = Lucide;
+
+        function FlightCardDetailItem({ icon: Icon, children }) {
+            return (
+                <div className="flight-card__detail-item">
+                    <Icon size={16} />
+                    <span>{children}</span>
                 </div>
-            </div>
-        </div>
-    </div>
+            );
+        }
+
+        function FlightCardFav({ isGlass }) {
+            return (
+                <button
+                    className={clsx(
+                        "flight-card__favorite-btn",
+                        isGlass && "flight-card__favorite-btn--glass"
+                    )}
+                    type="button"
+                    title="Add to favorites"
+                >
+                    <Heart size={18} strokeWidth={2} />
+                </button>
+            );
+        }
+
+        function FlightCardSearch() {
+            return (
+                <button className="flight-card__search-btn" type="button">
+                    Search flight
+                </button>
+            );
+        }
+
+        function FlightCard({
+            city,
+            flightClass,
+            price,
+            airportCode,
+            imageUrl,
+            isSplit = false
+        }) {
+            const priceFormatted = new Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: "USD",
+                minimumFractionDigits: 0
+            }).format(price);
+
+            return (
+                <div className={clsx(
+                    "flight-card",
+                    isSplit && "flight-card--split"
+                )}>
+                    <div className="flight-card__image-container">
+                        <img
+                            className="flight-card__image"
+                            src={imageUrl}
+                            alt={city}
+                            width={310}
+                            height={isSplit ? 310 : 545}
+                        />
+                    </div>
+                    {!isSplit && (
+                        <React.Fragment>
+                            <div className="flight-card__overlay"></div>
+                            <FlightCardFav isGlass />
+                        </React.Fragment>
+                    )}
+                    <div className="flight-card__content">
+                        <h2 className="flight-card__title">{city}</h2>
+                        <p className="flight-card__class">{flightClass}</p>
+                        <div className="flight-card__details">
+                            <FlightCardDetailItem icon={Tag}>
+                                from <strong>{priceFormatted}</strong>
+                            </FlightCardDetailItem>
+                            <FlightCardDetailItem icon={Plane}>
+                                <strong>{airportCode}</strong>
+                            </FlightCardDetailItem>
+                        </div>
+                        <div className="flight-card__actions">
+                            <FlightCardSearch />
+                            {isSplit && <FlightCardFav />}
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        function App() {
+            return (
+                <main>
+                    <FlightCard
+                        city="New York"
+                        flightClass="Economy"
+                        price={120}
+                        airportCode="JFK"
+                        imageUrl="https://assets.codepen.io/416221/new-york-city.jpeg"
+                    />
+                    <FlightCard
+                        city="San Francisco"
+                        flightClass="Premium economy"
+                        price={240}
+                        airportCode="SFO"
+                        imageUrl="https://assets.codepen.io/416221/golden-gate-bridge.jpeg"
+                        isSplit
+                    />
+                </main>
+            );
+        }
+
+        const rootElement = document.getElementById("root");
+        if (rootElement) {
+            createRoot(rootElement).render(
+                <StrictMode>
+                    <App />
+                </StrictMode>
+            );
+        }
+    </script>
 </body>
 </html>
