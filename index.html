@@ -36,15 +36,12 @@
             );
         }
 
-        function FlightCardFav({ isGlass }) {
+        function FlightCardFav() {
             const [liked, setLiked] = useState(false);
 
             return (
                 <button
-                    className={clsx(
-                        "flight-card__favorite-btn",
-                        isGlass && "flight-card__favorite-btn--glass"
-                    )}
+                    className="flight-card__favorite-btn--glass"
                     type="button"
                     title="Add to favorites"
                     onClick={(e) => {
@@ -95,13 +92,10 @@
                             alt={city}
                             loading="lazy"
                         />
+                        <div className="flight-card__overlay"></div>
+                        <FlightCardFav />
                     </div>
-                    {!isSplit && (
-                        <React.Fragment>
-                            <div className="flight-card__overlay"></div>
-                            <FlightCardFav isGlass />
-                        </React.Fragment>
-                    )}
+                    
                     <div className="flight-card__content">
                         <h2 className="flight-card__title">{city}</h2>
                         <p className="flight-card__class">{flightClass}</p>
@@ -115,7 +109,6 @@
                         </div>
                         <div className="flight-card__actions">
                             <FlightCardSearch />
-                            {isSplit && <FlightCardFav />}
                         </div>
                     </div>
                 </div>
@@ -125,7 +118,7 @@
         function App() {
             return (
                 <div className="app-container">
-                    <header style={{ textAlign: 'center', marginBottom: '3em', marginTop: '2em' }}>
+                    <header style={{ textAlign: 'center', marginBottom: '2em', marginTop: '1em' }}>
                         <h1 style={{ fontSize: '2.5rem', fontWeight: '800', letterSpacing: '-0.04em' }}>Explore Destinations</h1>
                         <p style={{ opacity: 0.6 }}>Premium flight deals curated for you.</p>
                     </header>
