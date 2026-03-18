@@ -51,7 +51,7 @@ body {
 main {
 	display: flex;
 	justify-content: center;
-	gap: 2.5em;
+	gap: 2em;
 	padding: 2em 0;
 	flex-wrap: wrap;
     width: 100%;
@@ -62,8 +62,8 @@ main {
 	box-shadow: 0 10px 30px -5px rgba(0,0,0,0.1);
 	border-radius: 2.5em;
 	position: relative;
-	width: 18em;
-	height: 32em;
+	width: 16.5em;
+	height: 28em;
 	transition: transform var(--trans-dur) var(--trans-timing), box-shadow var(--trans-dur) var(--trans-timing);
 	cursor: pointer;
     overflow: hidden;
@@ -93,7 +93,7 @@ main {
 
 /* Split card (San Francisco) - image is top half */
 .flight-card--split .flight-card__image-container {
-    height: 18em;
+    height: 15em;
 }
 
 .flight-card__image {
