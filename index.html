@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flight Card UI | React</title>
+    <title>Flight Card UI | Premium Edition</title>
     
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -15,7 +20,7 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel" data-type="module">
-        import React, { StrictMode } from "https://esm.sh/react";
+        import React, { StrictMode, useState } from "https://esm.sh/react";
         import { createRoot } from "https://esm.sh/react-dom/client";
         import clsx from "https://esm.sh/clsx";
         import * as Lucide from "https://esm.sh/lucide-react";
@@ -32,6 +37,8 @@
         }
 
         function FlightCardFav({ isGlass }) {
+            const [liked, setLiked] = useState(false);
+
             return (
                 <button
                     className={clsx(
@@ -40,8 +47,16 @@
                     )}
                     type="button"
                     title="Add to favorites"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setLiked(!liked);
+                    }}
                 >
-                    <Heart size={18} strokeWidth={2} />
+                    <Heart 
+                        size={18} 
+                        strokeWidth={2.5} 
+                        fill={liked ? "currentColor" : "none"} 
+                    />
                 </button>
             );
         }
@@ -78,8 +93,7 @@
                             className="flight-card__image"
                             src={imageUrl}
                             alt={city}
-                            width={310}
-                            height={isSplit ? 310 : 545}
+                            loading="lazy"
                         />
                     </div>
                     {!isSplit && (
@@ -110,23 +124,36 @@
 
         function App() {
             return (
-                <main>
-                    <FlightCard
-                        city="New York"
-                        flightClass="Economy"
-                        price={120}
-                        airportCode="JFK"
-                        imageUrl="https://assets.codepen.io/416221/new-york-city.jpeg"
-                    />
-                    <FlightCard
-                        city="San Francisco"
-                        flightClass="Premium economy"
-                        price={240}
-                        airportCode="SFO"
-                        imageUrl="https://assets.codepen.io/416221/golden-gate-bridge.jpeg"
-                        isSplit
-                    />
-                </main>
+                <div className="app-container">
+                    <header style={{ textAlign: 'center', marginBottom: '3em', marginTop: '2em' }}>
+                        <h1 style={{ fontSize: '2.5rem', fontWeight: '800', letterSpacing: '-0.04em' }}>Explore Destinations</h1>
+                        <p style={{ opacity: 0.6 }}>Premium flight deals curated for you.</p>
+                    </header>
+                    <main>
+                        <FlightCard
+                            city="New York"
+                            flightClass="Economy"
+                            price={120}
+                            airportCode="JFK"
+                            imageUrl="https://assets.codepen.io/416221/new-york-city.jpeg"
+                        />
+                        <FlightCard
+                            city="Tokyo"
+                            flightClass="Business"
+                            price={850}
+                            airportCode="HND"
+                            imageUrl="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&q=80&w=600"
+                        />
+                        <FlightCard
+                            city="San Francisco"
+                            flightClass="Premium economy"
+                            price={240}
+                            airportCode="SFO"
+                            imageUrl="https://assets.codepen.io/416221/golden-gate-bridge.jpeg"
+                            isSplit
+                        />
+                    </main>
+                </div>
             );
         }
 
